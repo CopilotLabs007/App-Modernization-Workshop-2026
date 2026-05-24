@@ -49,11 +49,12 @@ flowchart LR
 
 ## 🧩 Extensions to Install
 
-To get started with GitHub Copilot Modernization, you need to install the provided extensions in your IDE.
+| 🔌 Extension | 🏢 Publisher | 🎯 Purpose |
+|-----------|-----------|--------|
+| 🟣 **GitHub Copilot modernization for .NET** | Microsoft | .NET Framework → .NET 8/9 upgrades |
+| 🔵 **GitHub Copilot modernization** | Microsoft | Migrate Java & .NET apps to Azure |
+| ☕ **GitHub Copilot modernization – upgrade for Java** | Microsoft | Java runtime & Spring Boot upgrades |
 
-**For VS Code & Visual Studio:**
-![Extensions to Install](images/extensions-marketplace-modernization.png)
-*(Search for "modernization" in the extensions view / marketplace)*
 
 ---
 
@@ -260,54 +261,6 @@ Legacy App  ──►  Assess  ──►  Plan  ──►  Transform  ──► 
 
 ---
 
-## 🏛️ Architecture of the App Modernization Agent
-
-> 💡 The extension is **not a single prompt or skill** — it is a layered agent experience where each layer delegates to domain-specific capabilities.
-
-### Component Architecture
-
-```mermaid
-flowchart TD
-    U[👩‍💻 Developer in VS Code / Visual Studio / CLI] --> A
-
-    subgraph A[🤖 App Modernization Agent Experience]
-        B[🔍 Discovery Layer\nDetects language, framework, versions, EOL status]
-        C[📋 Planning Layer\nGenerates assessment report and upgrade plan]
-        D[🔧 Execution Layer\nRuns built-in tasks and skills]
-        E[✅ Validation Layer\nBuild, test, and security validation]
-        F[☁️ Output Layer\nCode changes, Dockerfile, IaC, CI/CD, reports]
-        B --> C --> D --> E --> F
-    end
-
-    D --> D1[☕ Java upgrade recipes\nOpenRewrite-based]
-    D --> D2[🟣 .NET upgrade actions\nSDK-style conversion]
-    D --> D3[🔐 Azure migration tasks\nKey Vault, Service Bus, Identity]
-    D --> D4[🐳 Containerization tasks\nDockerfile + IaC]
-    D --> D5[🧩 Your custom skills\nOrg-specific patterns]
-
-    E --> E1[🔨 Compile and build]
-    E --> E2[🧪 Test execution]
-    E --> E3[🛡️ CVE remediation]
-```
-
-### End-to-End Workflow
-
-```mermaid
-flowchart LR
-    A([📂 Legacy App]) --> B
-    B[🔍 Detect\nJava / .NET\nshape & version] --> C
-    C[📋 Assess +\nGenerate plan] --> D
-    D[🔧 Execute\nUpgrade + Migrate\nbuilt-in tasks] --> E
-    E[✅ Validate\nbuild · tests\nCVE scan] --> F
-    F[📦 Outputs\ncode · Dockerfile\nIaC · reports] --> G
-    G([👩‍⚖️ Human\nreviews & approves])
-
-    style A fill:#555,color:#fff
-    style G fill:#0078D4,color:#fff
-```
-
----
-
 ## ❓ Common Questions from Java Developers Using Only Agent Mode
 
 ### 1. ❓ Can't I just create my own custom agent, for example `java-modernization`?
@@ -406,13 +359,3 @@ flowchart LR
 ```
 
 ---
-
-## 📚 What's Next
-
-| Resource | Link |
-| -------- | ---- |
-| 🎬 Workshop Demo Scenarios | [README_Demo_Scenarios.md](README_Demo_Scenarios.md) |
-| 🗺️ Full Modernization Overview | [README_Modernization_Overview.md](README_Modernization_Overview.md) |
-| ☕ Java Upgrade Guide | [README Java Upgrade.md](README%20Java%20Upgrade.md) |
-| 🟣 .NET Upgrade Guide | [README_DotNet_Upgrade.md](README_DotNet_Upgrade.md) |
-| 📖 Official Docs | [GitHub Copilot modernization docs](https://learn.microsoft.com/en-us/azure/developer/github-copilot-app-modernization/) |
